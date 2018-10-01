@@ -11,7 +11,8 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
 public class IdGenerator  implements IdentifierGenerator {
 
 	@Autowired
