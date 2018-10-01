@@ -5,19 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class customers {
 	
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long customerId;
+    @GenericGenerator(name = "CUSTOMER_ID", strategy = "com.example.demo.IdGenerator")
+    @GeneratedValue(generator = "CUSTOMER_ID")
+	private String customerId;
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	public String getFirstName() {
@@ -43,7 +47,7 @@ public class customers {
 		return "customers [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", emailId=" + emailId + "]";
 	}
-	public customers(Long customerId, String firstName, String lastName, String emailId) {
+	public customers(String customerId, String firstName, String lastName, String emailId) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;

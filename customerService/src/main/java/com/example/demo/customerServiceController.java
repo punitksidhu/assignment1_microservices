@@ -18,6 +18,8 @@ public class customerServiceController {
 	
 	@Autowired
 	customerRepository customerrepository;
+	//@Autowired
+	//private Configuration configuration;
 	
 	@GetMapping("/port/service1/customers")
 	public List<customers> getCustomers(){
@@ -31,6 +33,7 @@ public class customerServiceController {
 	@PostMapping("/port/service1/customer")
 	
 	public ResponseEntity<Object> createcustomer(@RequestBody customers customer) {
+		//customer.setCustomerId(configuration.getEnv());
 		customers savedcustomer = customerrepository.save(customer);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
